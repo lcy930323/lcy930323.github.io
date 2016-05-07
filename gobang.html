@@ -165,7 +165,9 @@
                     // 还没有胜利 计算机开始下 
                     if( !_this.over ) {
                         _this.me = !_this.me;
+                        console.time('电脑用了');
                         _this.computerAI();
+                        console.timeEnd('电脑用了');
                     }
                 }
 
@@ -205,7 +207,7 @@
                                 } else if( this.myWin[k] == 2 ) {
                                     myScore[i][j] += 400;
                                 } else if( this.myWin[k] == 3 ) {
-                                    myScore[i][j] += 2000;
+                                    myScore[i][j] += 4000;
                                 } else if( this.myWin[k] == 4 ) {
                                     myScore[i][j] += 100000;
                                 }
@@ -217,7 +219,7 @@
                                 } else if( this.computerWin[k] == 3 ) {
                                     computerScore[i][j] += 2100;
                                 } else if( this.computerWin[k] == 4 ) {
-                                    computerScore[i][j] += 200000;
+                                    computerScore[i][j] += 220000;
                                 }
                             }
                         };
@@ -315,10 +317,10 @@
                 gradient.addColorStop(0, '#0A0A0A'); 
                 gradient.addColorStop(1, '#636766'); 
             } else {
-                gradient.addColorStop(0, '#d1d1d1'); 
-                gradient.addColorStop(1, '#f9f9f9');
-                // gradient.addColorStop(0, '#EA6974'); 
-                // gradient.addColorStop(1, '#E2B2B6'); 
+                // gradient.addColorStop(0, '#d1d1d1'); 
+                // gradient.addColorStop(1, '#f9f9f9');
+                gradient.addColorStop(0, '#EA6974'); 
+                gradient.addColorStop(1, '#E2B2B6'); 
             }
             ctx.fillStyle = gradient;
             ctx.fill();
