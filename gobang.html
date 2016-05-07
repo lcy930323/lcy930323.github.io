@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>五字棋</title>
+    <title>五子棋</title>
+    <meta name="viewport" content="width=device-width">
     <style type="text/css">
     body {
         margin: 0;
@@ -24,7 +25,7 @@
     </style>
 </head>
 <body>
-    <h1>五字棋</h1>
+    <h1>五子棋</h1>
     <canvas id="game" width="450" height="450"></canvas>
 
 
@@ -32,7 +33,7 @@
 
     var game = {
 
-        init : function ( id ) {
+        init : function ( id, option ) {
             this.id = id;
             this.el = document.getElementById( id );
             this.ctx = this.el.getContext('2d');
@@ -43,7 +44,9 @@
         },
 
         reset: function () {
-            location.reload();
+            this.ctx.clearRect(0, 0, this.el.width, this.el.height);
+            this.ctx.beginPath();
+            this.init( this.id );
         },
 
         initData: function () {
@@ -171,7 +174,9 @@
             var computerScore = [];
             var max = 0;
             var u = 0, v = 0;
+            var isHaveEmpty = false;
 
+            // 每个点落子的分数数组初始化
             for (var i = 0; i < 15; i++) {
                 myScore[i] = [];
                 computerScore[i] = [];
@@ -181,10 +186,13 @@
                 }
             };
 
-
+            // 计算每个点落子的分数
             for (var i = 0; i < 15; i++) {
                 for (var j = 0; j < 15; j++) {
+
+                    // 这个点是空的
                     if( this.borad[i][j] === 0 ) {
+                        isHaveEmpty = true;
 
                         for (var k = 0; k < this.count; k++) {
                             if( this.wins[i][j][k] ) {
@@ -235,6 +243,13 @@
                     }
                 }
             };
+
+            // 如果棋盘子下满了则平局
+            if( !isHaveEmpty ) {
+                alert('打平啦~');
+                this.reset();
+                return this;
+            }
 
             this.oneStep(u, v, false);
             this.borad[u][v] = 2;
@@ -291,7 +306,6 @@
 
             ctx.beginPath();
             ctx.arc(x, y, 13, 0, 2 * Math.PI);
-            ctx.closePath();
 
             var gradient = ctx.createRadialGradient(x + 2, y - 2, 13,x + 2, y - 2, 0);
             if( me ) { 
@@ -303,6 +317,7 @@
             }
             ctx.fillStyle = gradient;
             ctx.fill();
+            ctx.closePath();
         }
 
     };
