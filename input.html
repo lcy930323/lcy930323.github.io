@@ -7,24 +7,34 @@
 	<style>
 	input {
 		border: 1px solid #ccc;
+		border-radius: 0;
+		outline: 0;
+	}
+
+	.row {
+		padding: 10px;
 	}
 	</style>
 </head>
 <body>
 	
-	<input type="text"> <br>
+	<p>text:<input type="text"> </p>
 
-	<input type="tel"> <br>
+	<p>tel:<input type="tel"> </p>
 
-	<input type="number"> <br>
+	<p>url:<input type="url"> </p>
 
-	<form action="#" onsubmit="return false;"><input type="search"></form>
+	<p>email:<input type="email"> </p>
 
-	<input type="text" patter="[0-9]*"> <br>
+	<p>number:<input type="number"> </p>
 
-	<input type="text" autocorrect="off"> <br>
+	<p>search:<form action="#" onsubmit="return false;"><input type="search"></form></p>
 
-	<input type="text" autocaptalize="off"> <br>
+	<p>pattern:<input type="text" pattern="[0-9]*"> </p>
+
+	<p>autocorrect:<input type="text" autocorrect="off"> </p>
+
+	<p>autocorrect:<input type="text" autocaptalize="off"> </p>
 
 </body>
 </html>
